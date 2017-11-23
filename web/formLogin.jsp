@@ -19,7 +19,7 @@
             <h5>Faça seu login para acessar todos os nossos produtos</h5>
 
         </center>   
-        <form>
+    <form action="ServletUsuario">
             <div style="width: 30%; margin: auto">
                 <div class="form-group" >
                     <label for="input-login">Login</label>

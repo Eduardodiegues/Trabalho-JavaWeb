@@ -13,8 +13,44 @@ import java.util.ArrayList;
  * @author Lucas
  */
 public class UsuarioDao {
-    private ArrayList<Usuario> usuarios = null;
+    private static ArrayList<Usuario> lista = null;
+
+    public UsuarioDao() {
+        lista = new ArrayList<Usuario>();
+    }
+      
+        
+    public void addUsuario(Usuario p)
+    {
+        lista.add(p);
+    }
     
     
+    public Usuario consultarUsuario(String login)
+    {
+        for(Usuario u: lista)
+        {
+            if(login.equals(u.getLogin()))
+                return u;
+        }
+        return null; 
+    }
     
+    public boolean validarLogin(Usuario u)
+    {
+        Usuario j = consultarUsuario(u.getLogin());
+        if(j !=  null)
+        {
+            if(u.getSenha().equals(j.getSenha()))
+            {
+                return true;
+            }else
+            {
+                return false;
+            }                        
+        }else 
+        {
+            return false;
+        }    
+    }
 }

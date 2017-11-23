@@ -5,9 +5,11 @@
  */
 package controlers;
 
+import beans.Usuario;
 import dao.UsuarioDao;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -36,12 +38,33 @@ public class ServletUsuario extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
+        RequestDispatcher rd = null;
+        
+        Usuario u1 = new Usuario();
+        u1.setLogin("lucas");
+        u1.setSenha("lucas");
+        dao.addUsuario(u1);
         
         
+        String userLogin =  request.getParameter("login");
+        String userSenha  = request.getParameter("senha");
+        
+        Usuario u = new Usuario();
+        u.setLogin(userLogin);
+        u.setSenha(userSenha);
+        
+        boolean rep = dao.validarLogin(u);
+        
+        if(rep == true)
+        {
+            rd = request.getRequestDispatcher("index.jsp");    
+        }else
+        {
+            rd = request.getRequestDispatcher("formLogin.jsp");
+        }
         
         
-        
-        
+        rd.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
