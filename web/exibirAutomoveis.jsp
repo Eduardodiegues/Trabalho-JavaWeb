@@ -28,8 +28,8 @@
             <td>${veiculos.numportas}</td>
             <td>${veiculos.opcionais}</td>
             <td>${veiculos.qntestoque}</td>
-            <td><a href="Automovel?opcao=3&placa=${prod.placa}">Remover</a>
-                        &nbsp;<a href="Automovel?opcao=4&placa=${prod.placa}">Alterar</a>
+            <td><a href="Automovel?opcao=3&placa=${veiculos.placa}">Remover</a>
+                        &nbsp;<a href="Automovel?opcao=4&placa=${veiculos.placa}">Alterar</a>
             </td>
         </tr>
         

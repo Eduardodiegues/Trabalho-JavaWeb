@@ -24,9 +24,33 @@ public class AutomovelDao {
         automoveis.add(a);
     }
     
-    public ArrayList<Automovel> todosAutomoveis()
+    public ArrayList<Automovel> todosAutomoveis() //listar todos
     {
         return automoveis;
+    }
+    
+    public void removerAutomovel(Automovel a) //remover
+    {
+        automoveis.remove(a);
+    }
+    
+    public Automovel pesquisarAutomovel(String placa) //consultar
+    {
+        for(Automovel a: automoveis)
+        {
+            if(a.getPlaca() == placa)
+            {
+                return a;
+            }
+        }        
+        return null;
+    }
+    
+    public void alteraAutomovel(Automovel a) //alterar
+    {
+        Automovel aut = pesquisarAutomovel(a.getPlaca());
+        int id = automoveis.indexOf(aut);
+        automoveis.set(id, aut);
     }
     
 }
