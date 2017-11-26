@@ -5,7 +5,6 @@
 --%>
 <%@taglib uri="http://java.sun.com/jstl/core" prefix="c"%>
 <%@include file="includes/header.jsp" %>
- <script language="JavaScript" src="js/script.js"></script>
 
 <div class="container">
     <form action="Automovel" method="get">
@@ -70,6 +69,9 @@
                 <label for="input-automovel-qtdestoque">Quantidade em estoque</label>
                 <input min="0" required="required" placeholder="Quantidade de veículos em estoque" type="number" name="automovel-qntestoque" id="input-automovel-qtdestoque" class="form-control">
             </div>
+        
+            <input type="hidden" value="1" name="opcao">
+            
             <button type="submit" class="btn btn-lg btn-primary btn-block">Cadastrar</button>
         </form>
     </div>

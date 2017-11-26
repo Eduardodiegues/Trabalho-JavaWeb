@@ -14,11 +14,19 @@ import java.util.ArrayList;
  */
 public class AutomovelDao {
     private static ArrayList<Automovel> automoveis = null;
-    
+
+    public AutomovelDao() {
+        automoveis = new ArrayList<Automovel>();
+    }
+        
     public void addAutomovel(Automovel a)
     {
         automoveis.add(a);
     }
     
+    public ArrayList<Automovel> todosAutomoveis()
+    {
+        return automoveis;
+    }
     
 }

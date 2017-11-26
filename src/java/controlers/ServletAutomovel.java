@@ -5,13 +5,18 @@
  */
 package controlers;
 
+import beans.Automovel;
+import dao.AutomovelDao;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -19,6 +24,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "ServletAutomovel", urlPatterns = {"/Automovel"})
 public class ServletAutomovel extends HttpServlet {
+   
+    AutomovelDao dao = new AutomovelDao();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,17 +39,36 @@ public class ServletAutomovel extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        RequestDispatcher rd = null;
+        int opcao = Integer.parseInt(request.getParameter("opcao"));
         
-        String placa = request.getParameter("automovel-placa");
-        String chassi = request.getParameter("automovel-chassi");
-        String fabricante = request.getParameter("automovel-fabricante");
-        int anofabricacao = Integer.parseInt(request.getParameter("automovel-anofabricacao"));
-        float motorizacao = Float.parseFloat(request.getParameter("motorizacao"));
-        int qtdporta = Integer.parseInt(request.getParameter("automovel-qntporta"));
-        String opcionais = request.getParameter("opcionais");
-        int qtdestoque = Integer.parseInt(request.getParameter("automovel-qntestoque"));
+        if(opcao == 1) //cadastrar
+        {
+            Automovel a = new Automovel();
+            a.setPlaca(request.getParameter("automovel-placa"));
+            a.setChassi(request.getParameter("automovel-chassi"));
+            a.setFabricante( request.getParameter("automovel-fabricante"));
+            a.setAnofabricacao(Integer.parseInt(request.getParameter("automovel-anofabricacao")));
+            a.setMotorizacao(Float.parseFloat(request.getParameter("motorizacao")));
+            a.setNumportas(Integer.parseInt(request.getParameter("automovel-qntporta")));
+            a.setOpcionais(request.getParameter("opcionais"));
+            a.setQntestoque(Integer.parseInt(request.getParameter("automovel-qntestoque")));
+            
+            dao.addAutomovel(a);
+            
+            rd = request.getRequestDispatcher("Automovel?opcao=2");
+        }
         
+        if(opcao == 2) // exibir todos
+        {
+            ArrayList<Automovel> veiculos = dao.todosAutomoveis();
+            HttpSession session = request.getSession(true);
+            session.setAttribute("veiculos", veiculos);
+            rd = request.getRequestDispatcher("exibirAutomoveis.jsp");
+            
+        }
         
+        rd.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

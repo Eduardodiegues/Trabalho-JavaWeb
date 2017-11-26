@@ -17,7 +17,7 @@ public class Automovel {
     private float motorizacao;
     private int numportas;
     private String opcionais;
-    private int qndestoque;
+    private int qntestoque;
 
     public Automovel() {
     }
@@ -78,12 +78,12 @@ public class Automovel {
         this.opcionais = opcionais;
     }
 
-    public int getQndestoque() {
-        return qndestoque;
+    public int getQntestoque() {
+        return qntestoque;
     }
 
-    public void setQndestoque(int qndestoque) {
-        this.qndestoque = qndestoque;
+    public void setQntestoque(int qntestoque) {
+        this.qntestoque = qntestoque;
     }
     
     
