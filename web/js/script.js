@@ -5,6 +5,7 @@ function validarFormularioLoginJs()
     if(login == "" || senha == "")
     {
          document.getElementById("mensagemErroLogin").innerHTML = "Favor preencher todos os campos!"; 
+         document.getElementById("input-login").focus();
          return false;
     }    
 }

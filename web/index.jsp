@@ -4,15 +4,18 @@
     Author     : Lucas 
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
+<%@include file="includes/header.jsp"%>
+
+<div class="container">
+    <div class="starter-template">
+        <h3><strong>CONCESSIONÁRIA PNEU FURADO</strong></h3>
+        <p class="lead">Nossa concessionária tem por objetivo contruir um novo conceito em atendimento aos clientes, sempre observando as 
+        tendência de mercado e implementando as melhores tecnnologias, proporcionamos uma infraestrutura de qualidade e assim 
+        nossos clientes e amigos podem ter sua necessidades atendidas e sair com a sensação de que fezeram o melhor negócio.
+        </p> 
         
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Login</title>
-    </head>
-    <body>
-        
-    </body>
-</html>
+    </div>                       
+    
+</div>
+
+<%@include file="includes/footer.jsp"%>
