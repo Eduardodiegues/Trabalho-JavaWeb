@@ -15,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -39,12 +40,12 @@ public class ServletUsuario extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         RequestDispatcher rd = null;
+        HttpSession session = request.getSession(true);
         
         Usuario u1 = new Usuario();
         u1.setLogin("lucas");
         u1.setSenha("lucas");
         dao.addUsuario(u1);
-        
         
         String userLogin =  request.getParameter("login");
         String userSenha  = request.getParameter("senha");
@@ -53,14 +54,16 @@ public class ServletUsuario extends HttpServlet {
         u.setLogin(userLogin);
         u.setSenha(userSenha);
         
-        boolean rep = dao.validarLogin(u);
+        boolean resp = dao.validarLogin(u);     
         
-        if(rep == true)
+        if(resp == true)
         {
-            rd = request.getRequestDispatcher("index.jsp");    
+            rd = request.getRequestDispatcher("index.jsp");  
+            session.setAttribute("usuario", userLogin);
         }else
         {
             rd = request.getRequestDispatcher("formLogin.jsp");
+            request.setAttribute("mensagemErroLogin","Usuário e/ou Senha Inválido(s)! Por favor, tente novamente!");
         }
         
         

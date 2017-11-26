@@ -38,10 +38,10 @@ public class UsuarioDao {
     
     public boolean validarLogin(Usuario u)
     {
-        Usuario j = consultarUsuario(u.getLogin());
-        if(j !=  null)
+        Usuario user = consultarUsuario(u.getLogin());
+        if(user !=  null)
         {
-            if(u.getSenha().equals(j.getSenha()))
+            if(u.getSenha().equals(user.getSenha()))
             {
                 return true;
             }else
@@ -53,4 +53,6 @@ public class UsuarioDao {
             return false;
         }    
     }
+    
+    
 }
