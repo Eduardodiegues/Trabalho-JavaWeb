@@ -7,33 +7,37 @@
 
 <%@include file="includes/header.jsp" %>
 <table class="table table-hover">
-    <tr>
-        <th>Placa</th>
-        <th>Chassu</th>
-        <th>Fabricante</th>
-        <th>Ano de Fabricação</th>
-        <th>Motorização</th>
-        <th>Número de portas</th>
-        <th>Opcionais</th>
-        <th>Qnt Estoque</th>
-        <th>Opções</th>
-    </tr>
-    <c:forEach var="veiculos" items="${sessionScope.veiculos}">
+    <thead>
         <tr>
-            <td>${veiculos.placa}</td>
-            <td>${veiculos.chassi}</td>
-            <td>${veiculos.fabricante}</td>
-            <td>${veiculos.anofabricacao}</td>
-            <td>${veiculos.motorizacao}</td>
-            <td>${veiculos.numportas}</td>
-            <td>${veiculos.opcionais}</td>
-            <td>${veiculos.qntestoque}</td>
-            <td><a href="Automovel?opcao=3&placa=${veiculos.placa}">Remover</a>
-                        &nbsp;<a href="Automovel?opcao=4&placa=${veiculos.placa}">Alterar</a>
-            </td>
+            <th>Placa</th>
+            <th>Chassi</th>
+            <th>Fabricante</th>
+            <th>Ano de Fabricação</th>
+            <th>Motorização</th>
+            <th>Número de portas</th>
+            <th>Opcionais</th>
+            <th>Qnt Estoque</th>
+            <th>Opções</th>
         </tr>
-        
-    </c:forEach>
+    </thead>
+    <tbody>
+        <c:forEach var="veiculos" items="${sessionScope.veiculos}">
+            <tr>
+                <td>${veiculos.placa}</td>
+                <td>${veiculos.chassi}</td>
+                <td>${veiculos.fabricante}</td>
+                <td>${veiculos.anofabricacao}</td>
+                <td>${veiculos.motorizacao}</td>
+                <td>${veiculos.numportas}</td>
+                <td>${veiculos.opcionais}</td>
+                <td>${veiculos.qntestoque}</td>
+                <td><a href="Automovel?opcao=3&placa=${veiculos.placa}">Remover</a>
+                            &nbsp;<a href="Automovel?opcao=4&placa=${veiculos.placa}">Alterar</a>
+                </td>
+            </tr>
+
+        </c:forEach>
+    </tbody>
         
 </table>
 

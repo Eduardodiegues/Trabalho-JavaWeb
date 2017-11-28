@@ -3,7 +3,7 @@
     Created on : 22/11/2017, 20:55:47
     Author     : Lucas
 --%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -33,7 +33,10 @@
                 </div>
                 <button type="submit" class="btn btn-lg btn-primary btn-block">Entrar</button>
                 <p>
-                <p class="alert alert-danger" id="mensagemErroLogin">${mensagemErroLogin}</p>
+  
+                <p class="<c:if test="${mensagemErroLogin != null}">alert alert-danger</c:if>" id="mensagemErroLogin">${mensagemErroLogin}</p>                          
+                    
+                
             </div>
         </form>       
         
