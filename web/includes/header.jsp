@@ -28,9 +28,11 @@
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
+                        <c:if test="${usuario != null}">
                         <li>
                             <a href="ServletUsuario?opcao=2">Cadastrar Automóvel</a>
                         </li>
+                        </c:if>
                         <li>
                             <a href="ServletUsuario?opcao=3">Exibir Automóveis</a>
                         </li>
@@ -45,15 +47,22 @@
                     </ul>
                     <ul class="nav navbar-nav navbar-right nav-pills">
                         <li class="dropdown">
-                            <div class="dropdown-toggle">
-                                <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Usuário: ${usuario}
-                                    <span class="caret"></span>
-                                </button>
-                                    <ul class="dropdown-menu" aria-labelledby="dLabel">
-                                        <li><a href="index.jsp">Logout</a></li>
-                                    </ul>
-                            </div>
+                            <c:choose>
+                                <c:when test="${usuario != null}">
+                                    <div class="dropdown-toggle">
+                                        <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Usuário: ${usuario}
+                                            <span class="caret"></span>
+                                        </button>
+                                            <ul class="dropdown-menu" aria-labelledby="dLabel">
+                                                <li><a href="ServletUsuario?opcao=6">Logout</a></li>
+                                            </ul>
+                                    </div>
+                                </c:when>
+                                <c:otherwise>
+                                    <a href="ServletUsuario?opcao=4">Você não está logado, efetuar login</a>
+                                </c:otherwise>
+                            </c:choose>
                         </li>
                     </ul>
                         

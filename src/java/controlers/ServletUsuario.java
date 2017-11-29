@@ -43,8 +43,8 @@ public class ServletUsuario extends HttpServlet {
         
         HttpSession session = request.getSession(true);
         
-        if (opcao == 1) 
-        { //Login
+        if (opcao == 1) // Login 
+        { 
             
             if(dao.exibirTodos() != null)
             {
@@ -83,29 +83,28 @@ public class ServletUsuario extends HttpServlet {
             }else
             {
                 rd = request.getRequestDispatcher("formLogin.jsp");
-                request.setAttribute("mensagemErroLogin","Usuário e/ou Senha Inválido(s)! Por favor, tente novamente!");
+                session.setAttribute("mensagemErroLogin","Usuário e/ou Senha Inválido(s)! Por favor, tente novamente!");
             }
         }
-        else if (opcao == 2)
+        else if (opcao == 2) //Cadastrar imóvel
         {
            rd = request.getRequestDispatcher("formCadastrarAutomovel.jsp"); 
         }
-        else if (opcao == 3)
+        else if (opcao == 3) //Exibir todos os automóveis
         {
             rd = request.getRequestDispatcher("exibirAutomoveis.jsp");
         } 
-        else if (opcao == 4) 
+        else if (opcao == 4) //Ir para página de login
         {
             rd = request.getRequestDispatcher("formLogin.jsp");
-        } else if (opcao == 5)
+        } else if (opcao == 5) //Exibir último imóvel cadastrado
         {        
             rd = request.getRequestDispatcher("exibirUltimoCadastrado.jsp");   
+        }else if (opcao == 6) //Logout
+        {
+            session.removeAttribute("usuario");
+            rd = request.getRequestDispatcher("formLogin.jsp");
         }
-        
-             
-        
-        
-        
         
         rd.forward(request, response);
     }
