@@ -53,4 +53,9 @@ public class AutomovelDao {
         automoveis.set(id, aut);
     }
     
+    public ArrayList<Automovel> exibirTodos()
+    {
+        return automoveis;
+    }
+    
 }

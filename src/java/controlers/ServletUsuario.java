@@ -38,33 +38,73 @@ public class ServletUsuario extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
         RequestDispatcher rd = null;
+        int opcao = Integer.parseInt(request.getParameter("opcao"));
+        
         HttpSession session = request.getSession(true);
         
-        Usuario u1 = new Usuario();
-        u1.setLogin("lucas");
-        u1.setSenha("lucas");
-        dao.addUsuario(u1);
-        
-        String userLogin =  request.getParameter("login");
-        String userSenha  = request.getParameter("senha");
-        
-        Usuario u = new Usuario();
-        u.setLogin(userLogin);
-        u.setSenha(userSenha);
-        
-        boolean resp = dao.validarLogin(u);     
-        
-        if(resp == true)
+        if (opcao == 1) 
+        { //Login
+            
+            if(dao.exibirTodos() != null)
+            {
+            
+            Usuario u1 = new Usuario();
+            u1.setLogin("lucas");
+            u1.setSenha("lucas");
+            dao.addUsuario(u1);
+            
+            Usuario u2 = new Usuario();
+            u2.setLogin("luiz");
+            u2.setSenha("luiz");
+            dao.addUsuario(u2);
+            
+            Usuario u3 = new Usuario();
+            u3.setLogin("douglas");
+            u3.setSenha("douglas");
+            dao.addUsuario(u3);
+
+            }
+            
+            String userLogin =  request.getParameter("login");
+            String userSenha  = request.getParameter("senha");
+            
+            Usuario u = new Usuario();
+            u.setLogin(userLogin);
+            u.setSenha(userSenha);
+            
+            boolean resp = dao.validarLogin(u);
+           
+            if(resp)
+            {
+                session.setAttribute("usuario", userLogin);
+                rd = request.getRequestDispatcher("index.jsp");  
+                
+            }else
+            {
+                rd = request.getRequestDispatcher("formLogin.jsp");
+                request.setAttribute("mensagemErroLogin","Usuário e/ou Senha Inválido(s)! Por favor, tente novamente!");
+            }
+        }
+        else if (opcao == 2)
         {
-            rd = request.getRequestDispatcher("index.jsp");  
-            session.setAttribute("usuario", userLogin);
-        }else
+           rd = request.getRequestDispatcher("formCadastrarAutomovel.jsp"); 
+        }
+        else if (opcao == 3)
+        {
+            rd = request.getRequestDispatcher("exibirAutomoveis.jsp");
+        } 
+        else if (opcao == 4) 
         {
             rd = request.getRequestDispatcher("formLogin.jsp");
-            request.setAttribute("mensagemErroLogin","Usuário e/ou Senha Inválido(s)! Por favor, tente novamente!");
+        } else if (opcao == 5)
+        {        
+            rd = request.getRequestDispatcher("exibirUltimoCadastrado.jsp");   
         }
+        
+             
+        
+        
         
         
         rd.forward(request, response);

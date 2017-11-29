@@ -31,6 +31,7 @@
                     <label for="input-pass">Senha</label>
                     <input type="password" class="form-control" placeholder="Senha" name="senha" id="input-senha">
                 </div>
+                <input type="hidden" name="opcao" value="1">
                 <button type="submit" class="btn btn-lg btn-primary btn-block">Entrar</button>
                 <p>
   

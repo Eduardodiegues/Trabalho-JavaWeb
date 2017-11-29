@@ -4,6 +4,7 @@
     Author     : Lucas
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -28,13 +29,18 @@
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li>
-                            <a href="#">Cadastrar Automóvel</a>
+                            <a href="ServletUsuario?opcao=2">Cadastrar Automóvel</a>
                         </li>
                         <li>
-                            <a href="#">Exibir Automóveis</a>
+                            <a href="ServletUsuario?opcao=3">Exibir Automóveis</a>
                         </li>
+                        <c:if test="${ultimoCadastrado != null}">
                         <li>
-                            <a href="#">Login</a>
+                            <a href="ServletUsuario?opcao=5">Último Cadastrado</a>
+                        </li>
+                        </c:if>
+                        <li>
+                            <a href="ServletUsuario?opcao=4">Login</a>
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right nav-pills">

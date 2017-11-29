@@ -21,6 +21,7 @@
         </tr>
     </thead>
     <tbody>
+        <c:set var="totalEstoque" value="${0}"></c:set>
         <c:forEach var="veiculos" items="${sessionScope.veiculos}">
             <tr>
                 <td>${veiculos.placa}</td>
@@ -35,10 +36,11 @@
                             &nbsp;<a href="Automovel?opcao=4&placa=${veiculos.placa}">Alterar</a>
                 </td>
             </tr>
-
+            <c:set var="totalEstoque" value="${totalEstoque + veiculos.qntestoque}"></c:set>
         </c:forEach>
+    
     </tbody>
         
 </table>
-
+<h3>Quantidade em estoque: ${totalEstoque}</h3>
 <%@include file="includes/footer.jsp"%>

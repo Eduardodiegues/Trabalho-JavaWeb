@@ -42,6 +42,8 @@ public class ServletAutomovel extends HttpServlet {
         RequestDispatcher rd = null;
         int opcao = Integer.parseInt(request.getParameter("opcao"));
         
+        HttpSession session = request.getSession(true);
+        
         if(opcao == 1) //cadastrar
         {
             Automovel a = new Automovel();
@@ -55,14 +57,16 @@ public class ServletAutomovel extends HttpServlet {
             a.setQntestoque(Integer.parseInt(request.getParameter("automovel-qntestoque")));
             
             dao.addAutomovel(a);
+            session.setAttribute("veiculos", dao.exibirTodos());
             
-            rd = request.getRequestDispatcher("Automovel?opcao=2");
+            session.setAttribute("ultimoCadastrado", a);
+            
+            rd = request.getRequestDispatcher("index.jsp");
         }
         
         if(opcao == 2) // exibir todos
         {
             ArrayList<Automovel> veiculos = dao.todosAutomoveis();
-            HttpSession session = request.getSession(true);
             session.setAttribute("veiculos", veiculos);
             rd = request.getRequestDispatcher("exibirAutomoveis.jsp");
             
