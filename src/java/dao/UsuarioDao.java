@@ -13,22 +13,22 @@ import java.util.ArrayList;
  * @author Lucas
  */
 public class UsuarioDao {
-    private static ArrayList<Usuario> lista = null;
+    private static ArrayList<Usuario> usuarios = null;
 
     public UsuarioDao() {
-        lista = new ArrayList<Usuario>();
+        usuarios = new ArrayList<Usuario>();
     }
       
         
     public void addUsuario(Usuario p)
     {
-        lista.add(p);
+        usuarios.add(p);
     }
     
     
     public Usuario consultarUsuario(String login)
     {
-        for(Usuario u: lista)
+        for(Usuario u: usuarios)
         {
             if(login.equals(u.getLogin()))
                 return u;
@@ -52,6 +52,10 @@ public class UsuarioDao {
         {
             return false;
         }    
+    }
+    
+    public ArrayList<Usuario> exibirTodos(){
+        return usuarios;
     }
     
     
