@@ -38,7 +38,11 @@ public class AutomovelDao {
     {
         for(Automovel a: automoveis)
         {
+
             if(a.getPlaca().equals(placa))
+
+            if(a.getPlaca() == placa)
+
             {
                 return a;
             }
@@ -50,7 +54,11 @@ public class AutomovelDao {
     {
         Automovel aut = pesquisarAutomovel(a.getPlaca());
         int id = automoveis.indexOf(aut);
+
         automoveis.set(id, a);
+
+        automoveis.set(id, aut);
+
     }
     
     public ArrayList<Automovel> exibirTodos()

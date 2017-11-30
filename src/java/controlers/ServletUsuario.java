@@ -88,7 +88,9 @@ public class ServletUsuario extends HttpServlet {
         }
         else if (opcao == 2) //Cadastrar imóvel
         {
+
            session.removeAttribute("veiculoEditar");
+
            rd = request.getRequestDispatcher("formCadastrarAutomovel.jsp"); 
         }
         else if (opcao == 3) //Exibir todos os automóveis
@@ -104,7 +106,9 @@ public class ServletUsuario extends HttpServlet {
         }else if (opcao == 6) //Logout
         {
             session.removeAttribute("usuario");
+
             session.removeAttribute("mensagemErroLogin");
+
             rd = request.getRequestDispatcher("formLogin.jsp");
         }
         

@@ -12,12 +12,12 @@
             <th>Placa</th>
             <th>Chassi</th>
             <th>Fabricante</th>
-            <th>Ano de Fabricação</th>
-            <th>Motorização</th>
-            <th>Número de portas</th>
+            <th>Ano de FabricaÃ§Ã£o</th>
+            <th>MotorizaÃ§Ã£o</th>
+            <th>NÃºmero de portas</th>
             <th>Opcionais</th>
             <th>Qnt Estoque</th>
-            <th>Opções</th>
+            <th>OpÃ§Ãµes</th>
         </tr>
     </thead>
     <tbody>
@@ -43,8 +43,10 @@
         
 </table>
 <h3>Quantidade em estoque: ${totalEstoque}</h3>
+
         <c:forEach var="teste" items="${sessionScope.teste}">
             <h1>${teste.motorizacao}</h1>
         </c:forEach>
             
+
 <%@include file="includes/footer.jsp"%>

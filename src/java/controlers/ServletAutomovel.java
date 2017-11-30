@@ -64,6 +64,9 @@ public class ServletAutomovel extends HttpServlet {
             rd = request.getRequestDispatcher("index.jsp");
         } 
         else if(opcao == 2) // exibir todos
+        }
+        
+        if(opcao == 2) // exibir todos
         {
             ArrayList<Automovel> veiculos = dao.todosAutomoveis();
             session.setAttribute("veiculos", veiculos);
